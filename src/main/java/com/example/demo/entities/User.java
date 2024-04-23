@@ -18,7 +18,7 @@ public class User {
 	@DynamoDBAttribute
 	private String mobile_number;
 	@DynamoDBAttribute
-	private String passsword;
+	private String password;
 	public String getUser_id() {
 		return user_id;
 	}
@@ -38,10 +38,10 @@ public class User {
 		this.mobile_number = mobile_number;
 	}
 	public String getPasssword() {
-		return passsword;
+		return password;
 	}
 	public void setPasssword(String passsword) {
-		this.passsword = passsword;
+		this.password = passsword;
 	}
 	
 }
