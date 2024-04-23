@@ -15,14 +15,14 @@ public class PropertyController {
 	@Autowired
 	public PropertyRepository propertyRepository;
 	
-	@PostMapping("property")
+	@PostMapping("/property")
 	public Property saveProperty(@RequestBody Property property)
 	{
 		return propertyRepository.save(property);
 	}
 	@PostMapping("/property/{id}")
 	public Property getProperty(@PathVariable("id") String property_id)
-	{
+	{	
 		return propertyRepository.getPropertyById(property_id);
 	}
 	
