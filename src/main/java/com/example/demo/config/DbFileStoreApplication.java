@@ -12,19 +12,12 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 @Configuration
 public class DbFileStoreApplication {
 
-	@Value("${cloud.aws.credentials.access-key}")
-	private String awsAccesskey;
 	
-	@Value("${cloud.aws.credentials.secret-key}")
-	private String awsSecretKey;
-	
-	@Value("${cloud.aws.region.static}")
-	private String region;
 
     @Bean
     AmazonS3 client()
-	{String AccessKey = "AKIAZI2LCBP2ZJCGDAV2";
-	 String SecretKey = "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";
+	{String AccessKey = "";
+	 String SecretKey = "";
 	 String reg  ="eu-north-1";
 		com.amazonaws.auth.AWSCredentials credentials =  new BasicAWSCredentials(AccessKey,SecretKey);
 		

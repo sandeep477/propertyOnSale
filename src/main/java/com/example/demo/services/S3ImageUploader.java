@@ -31,8 +31,7 @@ public class S3ImageUploader implements ImageUploader{
 	@Autowired
 	private AmazonS3 client;
 	
-	@Value("${app.s3.bucket}")
-	private String bucketName;
+
 
 	@Override
 	public String uploadImage(MultipartFile image) {

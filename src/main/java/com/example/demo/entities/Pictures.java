@@ -18,9 +18,9 @@ public class Pictures {
 	private String property_id;
 	
 	@DynamoDBAttribute
-	private String picutre_url;
+	private String[] picutre_url;
 
-	public Pictures(String picture_id, String property_id, String picutre_url) {
+	public Pictures(String picture_id, String property_id, String[] picutre_url) {
 		super();
 		this.picture_id = picture_id;
 		this.property_id = property_id;
@@ -43,11 +43,11 @@ public class Pictures {
 		this.property_id = property_id;
 	}
 
-	public String getPicutre_url() {
+	public String[] getPicutre_url() {
 		return picutre_url;
 	}
 
-	public void setPicutre_url(String picutre_url) {
+	public void setPicutre_url(String[] picutre_url) {
 		this.picutre_url = picutre_url;
 	}
 	
