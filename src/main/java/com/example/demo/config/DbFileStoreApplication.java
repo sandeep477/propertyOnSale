@@ -16,9 +16,10 @@ public class DbFileStoreApplication {
 
     @Bean
     AmazonS3 client()
-	{String AccessKey = "";
-	 String SecretKey = "";
-	 String reg  ="eu-north-1";
+	{
+    	String AccessKey = "";
+		String SecretKey = "";
+		String reg  ="eu-north-1";
 		com.amazonaws.auth.AWSCredentials credentials =  new BasicAWSCredentials(AccessKey,SecretKey);
 		
 		

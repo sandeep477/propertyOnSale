@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,5 +27,10 @@ public class UserController {
     public User getUser(@PathVariable("id") String user_id)
     {
     	return userRepository.getUserById(user_id);
+    }
+    
+    @DeleteMapping("/user/{id}")
+    public String deleteUser(@PathVariable("id") String user_id) {
+    	return userRepository.delete(user_id);
     }
 }

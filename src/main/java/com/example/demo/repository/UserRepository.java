@@ -31,8 +31,7 @@ public class UserRepository {
 	{
 		User user = dynamoDBMapper.load(User.class,user_id);
 		dynamoDBMapper.delete(user);
-		
-		return "user Deleted";
+		return "User is deleted successfully!";
 		
 	}
 	

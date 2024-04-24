@@ -26,8 +26,9 @@ public class DynamoDBConfiguration {
 				.withEndpointConfiguration(
                    new AwsClientBuilder.EndpointConfiguration("dynamodb.eu-north-1.amazonaws.com","eu-north-1"))
 				.withCredentials(new AWSStaticCredentialsProvider(
-						new BasicAWSCredentials("",
-								""
+						new BasicAWSCredentials(
+									"",
+									""
 								)))
 				.build();
 	}
