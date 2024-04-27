@@ -33,6 +33,25 @@ public class User {
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
+	public User(String user_id, String user_name, String userGroup, String mobile_number, String emailId,
+			String password) {
+		super();
+		this.user_id = user_id;
+		this.user_name = user_name;
+		this.userGroup = userGroup;
+		this.mobile_number = mobile_number;
+		this.emailId = emailId;
+		this.password = password;
+	}
+	
+	public User() {
+		
+	}
+	@Override
+	public String toString() {
+		return "User [user_id=" + user_id + ", user_name=" + user_name + ", userGroup=" + userGroup + ", mobile_number="
+				+ mobile_number + ", emailId=" + emailId + ", password=" + password + "]";
+	}
 	public String getUser_name() {
 		return user_name;
 	}
@@ -45,16 +64,16 @@ public class User {
 	public void setMobile_number(String mobile_number) {
 		this.mobile_number = mobile_number;
 	}
-	public String getPasssword() {
+	public String getpasssword() {
 		return password;
 	}
-	public void setPasssword(String passsword) {
+	public void setpasssword(String passsword) {
 		this.password = passsword;
 	}
-	public String getEmail() {
+	public String getemailId() {
 		return emailId;
 	}
-	public void setEmailId(String emailId) {
+	public void setemailId(String emailId) {
 		this.emailId = emailId;
 	}
 	public String getuserGroup() {
