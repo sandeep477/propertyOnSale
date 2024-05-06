@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.Dto.LoginDTO;
 import com.example.demo.entities.User;
+import com.example.demo.payload.response.LoginMessage;
 import com.example.demo.repository.UserRepository;
 
 @RestController
@@ -23,6 +26,12 @@ public class UserController {
     public User saveUser(@RequestBody User user)
     {
          return userRepository.save(user);    	
+    }
+    
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@RequestBody LoginDTO loginDTO) {
+    	LoginMessage loginMessage = userRepository.loginUser(loginDTO);
+    	return ResponseEntity.ok(loginMessage);
     }
     
     @GetMapping("/user/{id}")
