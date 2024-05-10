@@ -1,6 +1,7 @@
 package com.example.demo.repository;
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ExpectedAttributeValue;
 import com.example.demo.Dto.LoginDTO;
 import com.example.demo.entities.User;
+import com.example.demo.entities.registerUser;
+import com.example.demo.entities.userLogin;
 import com.example.demo.payload.response.LoginMessage;
 import com.amazonaws.services.dynamodbv2.document.Item;
 import com.amazonaws.services.dynamodbv2.document.Table;
@@ -24,15 +27,53 @@ public class UserRepository {
 	@Autowired
 	private DynamoDBMapper dynamoDBMapper;
 	
-//	@Autowired
-//	private Userrepo userRepo;
-
+	/**
+	 * 
+	 * @param registeruser
+	 * @return registered user
+	 */
+	public registerUser register(registerUser registeruser) {
+		registerUser user = dynamoDBMapper.load(registerUser.class, registeruser.getEmailId());
+		System.out.print("User: "+ user);
+		if(user != null) {
+			return null;
+		}
+		dynamoDBMapper.save(registeruser);
+		return registeruser;
+	}
+	
+	/**
+	 * 
+	 * @param userlogin
+	 * @return status of user login
+	 */
+	public LoginMessage signinUser(userLogin userlogin) {
+		registerUser user = dynamoDBMapper.load(registerUser.class, userlogin.getEmailId());
+        System.out.print("User: "+user);
+        // Check if the user exists
+        if (user != null) {
+            // Check if the password matches
+            if (user.getPassword().equals(userlogin.getPassword())) {
+                // Password matches, return login success
+                return new LoginMessage("Login Success", true);
+            } else {
+                // Password does not match, return login failed
+                return new LoginMessage("Password does not match", false);
+            }
+        } else {
+            // User does not exist, return login failed
+            return new LoginMessage("User does not exist", false);
+        }
+    }
+	
 	
 	public User save(User user)
 	{
 		dynamoDBMapper.save(user);
 		return user;
 	}
+	
+	
 	
 	public User getUserById(String user_id)
 	{
@@ -71,7 +112,7 @@ public class UserRepository {
 //				return new LoginMessage("Password does not matched", false);
 //			}
 //		} else {
-//			return new LoginMessage("Email does not matched", false);
+//			return new LoginMessage(")Email does not matched", false);
 //		}
 //		return null;
 //	}
@@ -103,6 +144,11 @@ public class UserRepository {
 								new AttributeValue().withS(user_id))));
 		
 		return user_id;
+	}
+
+	public List<User> findAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
